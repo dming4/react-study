@@ -2,14 +2,14 @@ import { createReactUnit } from './unit'
 import { createElement } from './element'
 class React {
     static render(element, container) {
+        let rootIndex = 0
 
         let reactUnit = createReactUnit(element)
 
-        const htmlstring = reactUnit.getMarkup();
+        const htmlstring = reactUnit.getMarkup(rootIndex)
 
         console.log(htmlstring, 'htmlstring')
         container.innerHTML = htmlstring
-
     }
 
     static createElement(element, props, ...children) {

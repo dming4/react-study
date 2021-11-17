@@ -34,11 +34,19 @@ console.log(element1, 'element1')
  * https://www.babeljs.cn/
  *
  */
+const say = function () {
+    alert('hello')
+}
+// let element = React.createElement(
+//     'div',
+//     { id: 'xxx' },
+//     'hello react',
+//     React.createElement('button', { onClick: say }, 'click')
+// )
+
 let element = React.createElement(
     'div',
-    { id: 'xxx' },
-    'hello react',
-    React.createElement('button', {}, 'click')
+    React.createElement('button', { onClick: say }, 'click')
 )
 console.log(element, 'element')
 React.render(element, document.getElementById('root'))

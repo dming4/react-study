@@ -37,19 +37,28 @@ import React from './myreact/react'
  * https://www.babeljs.cn/
  *
  */
+// let element = React.createElement(
+//     'div',
+//     { id: 'xxx' },
+//     'hello react',
+//     React.createElement('button', {}, 'click')
+// )
+// console.log(element, 'element')
+// React.render(element, document.getElementById('root'))
+// let element1 = React.createElement(
+//     'div',
+//     { id: 'data-reactid1' },
+//     'hello world',
+//     React.createElement('span', {}, '你好'),
+//     React.createElement('button', {}, 'click me')
+// )
+const say = function () {
+    alert('hello')
+}
 let element = React.createElement(
     'div',
-    { id: 'xxx' },
-    'hello react',
-    React.createElement('button', {}, 'click')
+    {},
+    React.createElement('button', { onClick: say }, 'click')
 )
 console.log(element, 'element')
 React.render(element, document.getElementById('root'))
-let element1 = React.createElement(
-    'div',
-    { id: 'data-reactid1' },
-    'hello world',
-    React.createElement('span', {}, '你好'),
-    React.createElement('button', {}, 'click me')
-)
-console.log(element1, 'element1')

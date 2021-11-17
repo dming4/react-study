@@ -8,9 +8,9 @@ class Unit {
 }
 
 class ReactTextUnit extends Unit {
-    getMarkup() {
-        // return `<span data-reactid=0>${this.element}</span>`
-        return this.element
+    getMarkup(rootIndex) {
+        return `<span data-reactid=${rootIndex}>${this.element}</span>`
+        //  return this.element
     }
 }
 
@@ -19,16 +19,27 @@ let element = React.createElement('div', "{id:'xxx'}", 'hello react')
  * 
  */
 class ReactNativeUnit extends Unit {
-    getMarkup() {
+    getMarkup(rootIndex) {
         let { type, props } = this.element
 
-        let tagStart = `<${type}`
+        let tagStart = `<${type}  data-reactid=${rootIndex}`
         let contentStr = ''
         for (const propName in props) {
-            if (propName === 'children') {
+            if (/^on[A-Z]/.test(propName)) {
+                document.addEventListener('click', (e) => {
+                    if (e.target.dataset.reactid === rootIndex) {
+                        props[propName]()
+                    }
+                })
+                // oBtn.onclick = function () {
+                //     props[propName]()
+                // }
+            } else if (propName === 'children') {
                 contentStr = props[propName]
                     .map((child, idx) => {
-                        return createReactUnit(child).getMarkup()
+                        return createReactUnit(child).getMarkup(
+                            rootIndex + '.' + idx
+                        )
                     })
                     .join('')
             } else {
