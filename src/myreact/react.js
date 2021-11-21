@@ -1,28 +1,22 @@
 import { createReactUnit } from './unit'
 import { createElement } from './element'
-class React {
-    static render(element, container) {
-        let rootIndex = 0
-
-        let reactUnit = createReactUnit(element)
-
-        const htmlstring = reactUnit.getMarkup(rootIndex)
-
-        console.log(htmlstring, 'htmlstring')
-        container.innerHTML = htmlstring
-    }
-
-    static createElement(element, props, ...children) {
-        return createElement(element, props, ...children)
-    }
+import Component from './component'
+import $ from 'jquery'
+const React = {
+    Component,
+    render,
+    createElement,
 }
+function render(element, container) {
+    let rootIndex = 0
 
-// function render(element, container) {
-//     let reactUnit = createReactUnit(element)
+    let reactUnit = createReactUnit(element)
 
-//     const htmlstring = reactUnit.getMarkup();
-//     container.innerHTML = htmlstring
+    const htmlstring = reactUnit.getMarkup(rootIndex)
 
-// }
+    console.log(htmlstring, 'htmlstring')
+    container.innerHTML = htmlstring
+    $(document).trigger('mounted')
+}
 
 export default React

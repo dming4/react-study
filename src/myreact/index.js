@@ -44,9 +44,9 @@ const say = function () {
 //     React.createElement('button', { onClick: say }, 'click')
 // )
 
-let element = React.createElement(
-    'div',
-    React.createElement('button', { onClick: say }, 'click')
-)
-console.log(element, 'element')
-React.render(element, document.getElementById('root'))
+// let element = React.createElement(
+//     'div',
+//     React.createElement('button', { onClick: say }, 'click')
+// )
+// console.log(element, 'element')
+// React.render(element, document.getElementById('root'))

@@ -15,8 +15,6 @@ let element = <div id='xxx'>
                 </div>
  
 let element=React.createElement('div', {id:'xxx'}, 'hello react',React.createElement('button',{},'click'))
-
-
 {
     type:'div',
     props:{ id:'xxx'

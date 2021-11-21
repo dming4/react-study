@@ -1,0 +1,31 @@
+String.prototype.slice
+slice(startIndex,endIndex?) 方法提取某个字符串的一部分,并返回一个新的字符串,且不会改动原字符串。
+
+
+1:slice(begin,end?) 方法提取某个字符串的一部分,并返回一个新的字符串,且不会改动原字符串。
+
+begin 
+提取起始处的索引（从 0 开始）,从该索引开始提取原数组元素。
+负数表示从倒数第几个开始
+
+end 可选
+提取终止处的索引（从 0 开始）,在该索引处结束提取原数组元素。slice 会提取原数组中索引从 begin 到 end 的所有元素（包含 begin,但不包含 end）。
+
+const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+animals.slice(-2)
+// 'duck', 'elephant'
+
+animals.slice(2,4) 不包括索引4
+//'camel', 'duck'
+
+animals.slice(2,-1) 不包括倒数第1个
+//'camel', 'duck'
+
+animals.slice(-2,-1) 不包括倒数第1个
+//'duck'
+
+2:backgroundColor->backgroundcolor
+let attr='backgroundColor' 
+attr.replace(/[A-Z]/,function(matched){
+    return '-'+matched.toLowerCase()
+})

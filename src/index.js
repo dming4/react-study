@@ -27,38 +27,77 @@
  * zero-react
  */
 import React from './myreact/react'
+/**
+ * 01 string
+ */
 // let element = 'hello react'
 // React.render("hello react", document.getElementById('root'))
 
-// let element = <div id='xxx'>hello react <button>click</button></div>
-
 /**
- *
+ * 02 native element
  * https://www.babeljs.cn/
  *
  */
-// let element = React.createElement(
-//     'div',
-//     { id: 'xxx' },
-//     'hello react',
-//     React.createElement('button', {}, 'click')
-// )
-// console.log(element, 'element')
-// React.render(element, document.getElementById('root'))
-// let element1 = React.createElement(
-//     'div',
-//     { id: 'data-reactid1' },
-//     'hello world',
-//     React.createElement('span', {}, '你好'),
-//     React.createElement('button', {}, 'click me')
-// )
+
 const say = function () {
     alert('hello')
 }
-let element = React.createElement(
-    'div',
-    {},
-    React.createElement('button', { onClick: say }, 'click')
-)
+
+// let element = (
+//     <div id="xxx">
+//         hello react <button onClick={say}>click</button>
+//     </div>
+// )
+// let element = React.createElement(
+//     'div',
+//     { id: 'xxx', style: 'background-color:red', class: 'name' },
+//     'hello react',
+//     React.createElement('button', { onClick: say }, 'click')
+// )
+
+// console.log(element, 'element')
+// React.render(element, document.getElementById('root'))
+
+/**
+ * 03 component
+ */
+
+class Counter extends React.Component {
+    state = { count: 0 }
+    componentWillMount() {
+        console.log('Counter componentWillMount')
+    }
+    render() {
+        console.log('Counter render')
+
+        // return React.createElement(SubCounter)
+        return this.state.count
+    }
+    componentDidMount() {
+        setInterval(() => {
+            this.setState({ count: this.state.count + 1 })
+        }, 1000)
+        console.log('Counter componentDidMount')
+    }
+    shouldComponentUpdate(nextProps, nextState) {
+        return true
+    }
+}
+class SubCounter {
+    state = { name: 'subcounter' }
+    componentWillMount() {
+        console.log('SubCounter componentWillMount')
+    }
+    render() {
+        console.log('SubCounter render')
+
+        return this.state.name
+    }
+    componentDidMount() {
+        console.log('SubCounter componentDidMount')
+    }
+}
+
+let element = React.createElement(Counter, {})
 console.log(element, 'element')
 React.render(element, document.getElementById('root'))
